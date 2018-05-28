@@ -11,7 +11,7 @@ import co.com.mapeo.entity.Prestamo;
 
 public class ClientTransaction {
 	   
-     public void insertarCliente(int id, String nombre, String apellido, String fechaNac) {
+     public void insertarCliente(int id, String nombre, String apellido, Date fechaNac) {
          EntityManagerFactory emfactory = null;
     	 EntityManager entitymanager = null;
     	 try{
@@ -59,7 +59,6 @@ public class ClientTransaction {
     	 }
      } 
      
-     @SuppressWarnings("unused")
 	private EntityManagerFactory getEntityManagerFactory() {
     	 EntityManagerFactory emfactory = null;
          try {

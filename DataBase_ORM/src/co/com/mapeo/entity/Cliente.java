@@ -1,5 +1,7 @@
 package co.com.mapeo.entity;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,11 +14,11 @@ public class Cliente {
 	 private int clienteID;
 	 private String nombre;
 	 private String apellido;
-	 private String fechaNacimiento;
+	 private Date fechaNacimiento;
 	 
 	public Cliente() {}
 
-	public Cliente(int id, String nombre, String apellido, String fechNac) {
+	public Cliente(int id, String nombre, String apellido, Date fechNac) {
 		this.clienteID = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -47,11 +49,11 @@ public class Cliente {
 		this.apellido = apellido;
 	}
 
-	public String getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(String fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 }
