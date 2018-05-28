@@ -1,0 +1,5 @@
+rootProject.name = 'BankService'
+
+include 'DataBase_JPA'
+project(':DataBase_JPA').projectDir = new File('../DataBase_JPA')
+
