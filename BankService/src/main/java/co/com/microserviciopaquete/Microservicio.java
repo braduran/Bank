@@ -1,13 +1,11 @@
 package co.com.microserviciopaquete;
 
-import java.util.Date;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.com.mapeo.servicio.CrearCliente;
+import co.com.mapeo.servicio.ClientTransaction;
 
 @RestController
 public class Microservicio {
@@ -17,7 +15,7 @@ public class Microservicio {
 						 @RequestParam(value = "nombre") String nombre,
 			             @RequestParam(value = "apellido")String apellido,
 			             @RequestParam(value = "fechaNac") String fechaNac){
-		CrearCliente create = new CrearCliente();
+		ClientTransaction create = new ClientTransaction();
 	    create.insertarCliente(id, nombre, apellido, fechaNac);
 	}
 }
