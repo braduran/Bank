@@ -18,18 +18,20 @@ public class Prestamo {
 	private int nitEmpresa;
 	private double salarioActual;
 	private String fechaIngreso;
+	private double valorAprobado;
 	
 	@JoinColumn(name = "ClienteID")
 	private int clienteId;
 	
 	public Prestamo() {}
 	
-	public Prestamo(int id, String nombreEmpresa, int nitEmpresa, double salarioActual, String fechaIngreso) {
+	public Prestamo(int id, String nombreEmpresa, int nitEmpresa, double salarioActual, String fechaIngreso, double valorAprobado) {
 		this.id = id;
 		this.nombreEmpresa = nombreEmpresa;
 		this.nitEmpresa = nitEmpresa;
 		this.salarioActual = salarioActual;
 		this.fechaIngreso = fechaIngreso;
+		this.valorAprobado = valorAprobado;
 	}
 	
 	public int getId() {
@@ -69,5 +71,11 @@ public class Prestamo {
 	}
 	public void setClienteId(int clienteId) {
 		this.clienteId = clienteId;
+	}
+	public double getValorAprobado() {
+		return valorAprobado;
+	}
+	public void setValorAprobado(double valorAprobado) {
+		this.valorAprobado = valorAprobado;
 	}
 }

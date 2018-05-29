@@ -2,10 +2,12 @@ package co.com.mapeo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="registro")
+@NamedQuery(query = "Select c from Cliente c where c.clienteID = :id", name = "find client")
 public class Cliente {
 
 	@Id
