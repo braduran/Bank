@@ -1,7 +1,5 @@
 package co.com.microserviciopaquete;
 
-import java.util.Date;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,7 +14,7 @@ public class Microservicio {
 	public void insertarCliente(@RequestParam(value = "id") int id,
 								@RequestParam(value = "nombre") String nombre,
 					            @RequestParam(value = "apellido")String apellido,
-					            @RequestParam(value = "fechaNac") Date fechaNac){
+					            @RequestParam(value = "fechaNac") String fechaNac){
 		ClientTransaction create = new ClientTransaction();
 	    create.insertarCliente(id, nombre, apellido, fechaNac);
 	}
@@ -25,8 +23,9 @@ public class Microservicio {
 	public void insertarPrestamo(@RequestParam(value = "nombreEmpresa") String nombreEmpresa,
 								 @RequestParam(value = "nitEmpresa") int nitEmpresa,
 					             @RequestParam(value = "salarioActual")double salarioActual,
-					             @RequestParam(value = "fechaIngreso") Date fechaIngreso){
+					             @RequestParam(value = "fechaIngreso") String fechaIngreso,
+					             @RequestParam(value = "idCliente") int idCliente){
 		ClientTransaction create = new ClientTransaction();
-	    create.insertarPrestamo(nombreEmpresa, nitEmpresa, salarioActual, fechaIngreso);
+	    create.insertarPrestamo(nombreEmpresa, nitEmpresa, salarioActual, fechaIngreso, idCliente);
 	}
 }

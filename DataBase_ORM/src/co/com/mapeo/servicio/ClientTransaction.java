@@ -1,7 +1,5 @@
 package co.com.mapeo.servicio;
 
-import java.util.Date;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -11,7 +9,7 @@ import co.com.mapeo.entity.Prestamo;
 
 public class ClientTransaction {
 	   
-     public void insertarCliente(int id, String nombre, String apellido, Date fechaNac) {
+     public void insertarCliente(int id, String nombre, String apellido, String fechaNac) {
          EntityManagerFactory emfactory = null;
     	 EntityManager entitymanager = null;
     	 try{
@@ -35,19 +33,24 @@ public class ClientTransaction {
     	 }
      } 
      
-     public void insertarPrestamo(String nombreEmpresa, int nitEmpresa, double salarioActual, Date fechaIngreso) {
+     public void insertarPrestamo(String nombreEmpresa, int nitEmpresa, double salarioActual, String fechaIngreso, int idCliente) {
     	 EntityManagerFactory emfactory = null;
          EntityManager entitymanager = null;
     	 try{
-    		 Prestamo p = new Prestamo(); 
     		 emfactory = getEntityManagerFactory();
 	         entitymanager = emfactory.createEntityManager();
 	         entitymanager.getTransaction().begin();
 	
+    		 Cliente cli = new Cliente();
+    		 cli.setClienteID(idCliente);
+    		 entitymanager.persist(cli);
+    		 
+    		 Prestamo p = new Prestamo(); 
 	         p.setNombreEmpresa(nombreEmpresa);
 	         p.setNitEmpresa(nitEmpresa);
 	         p.setSalarioActual(salarioActual);
 	         p.setFechaIngreso(fechaIngreso);
+	         p.setCliente(cli);
 	         
 	         entitymanager.persist(p);
 	         entitymanager.getTransaction().commit();
