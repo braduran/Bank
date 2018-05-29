@@ -41,16 +41,16 @@ public class ClientTransaction {
 	         entitymanager = emfactory.createEntityManager();
 	         entitymanager.getTransaction().begin();
 	
-    		 Cliente cli = new Cliente();
-    		 cli.setClienteID(idCliente);
-    		 entitymanager.persist(cli);
+    		 //Cliente cli = new Cliente();
+    		 //cli.setClienteID(idCliente);
+    		 //entitymanager.persist(cli);
     		 
     		 Prestamo p = new Prestamo(); 
 	         p.setNombreEmpresa(nombreEmpresa);
 	         p.setNitEmpresa(nitEmpresa);
 	         p.setSalarioActual(salarioActual);
 	         p.setFechaIngreso(fechaIngreso);
-	         p.setCliente(cli);
+	         p.setClienteId(idCliente);
 	         
 	         entitymanager.persist(p);
 	         entitymanager.getTransaction().commit();

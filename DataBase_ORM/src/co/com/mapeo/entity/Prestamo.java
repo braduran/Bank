@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,9 +19,8 @@ public class Prestamo {
 	private double salarioActual;
 	private String fechaIngreso;
 	
-	@ManyToOne
 	@JoinColumn(name = "ClienteID")
-	private Cliente cliente;
+	private int clienteId;
 	
 	public Prestamo() {}
 	
@@ -66,10 +64,10 @@ public class Prestamo {
 	public void setFechaIngreso(String fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public int getClienteId() {
+		return clienteId;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setClienteId(int clienteId) {
+		this.clienteId = clienteId;
 	}
 }
