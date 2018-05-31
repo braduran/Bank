@@ -23,9 +23,7 @@ public class ClientTransaction {
     	 Response res = new Response();
     	 try{
     		 if(ServicesConfiguration.caluteYearDates(fechaNac) < 18) {
-    			 res.setMessage(Constantes.LESS);
-    	         res.setStatus(Constantes.ERROR);    
-    	         return res;
+    			 return ServicesConfiguration.response(Constantes.LESS, Constantes.ERROR);
     		 }
     		 
     		 emfactory = getEntityManagerFactory();
@@ -63,16 +61,14 @@ public class ClientTransaction {
          Response res = new Response();
     	 try{
     		 if(ServicesConfiguration.caluteYearDates(fechaIngreso) < 1) {
-    			 res.setMessage(Constantes.LESS_ONE_YEAR);
-    	         res.setStatus(Constantes.ERROR);    
-    	         return res;
+    			 return ServicesConfiguration.response(Constantes.LESS_ONE_YEAR, Constantes.ERROR);
     		 }
     		 
     		 double valorAprobado = ServicesConfiguration.validateSalary(salarioActual);
     		 if(valorAprobado == 0) {
-    			 res.setMessage(Constantes.LOWER_SALARY);
-    	         res.setStatus(Constantes.ERROR);    
-    	         return res;
+    			 return ServicesConfiguration.response(Constantes.LOWER_SALARY, Constantes.ERROR);
+    		 }else if(valorAprobado == 1) {
+    			 return ServicesConfiguration.response(Constantes.HIGTH_SALARY, Constantes.ERROR);
     		 }
     		 
     		 emfactory = getEntityManagerFactory();
@@ -121,7 +117,8 @@ public class ClientTransaction {
     		 Query query = entitymanager.createNamedQuery("find client");
     		 query.setParameter("id", id);
     		 
-    		 List<Cliente> list = (List<Cliente>)query.getResultList();
+    		 @SuppressWarnings("unchecked")
+			 List<Cliente> list = (List<Cliente>)query.getResultList();
     		 
     		 if(list.isEmpty()) {
     			 res.setMessage(Constantes.SUCCESS);

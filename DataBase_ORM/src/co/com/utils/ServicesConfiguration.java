@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
+import co.com.mapeo.entity.Response;
+
 public final class ServicesConfiguration {
 	
 	public static int caluteYearDates(String fecha) {
@@ -27,9 +29,20 @@ public final class ServicesConfiguration {
 			valorAprobado = 5000000;
 		}else if(salary > 1000000 && salary <= 4000000) {
 			valorAprobado = 20000000;
+		}else if(salary >= 100000000) {
+			valorAprobado = 1;
 		}else if(salary > 4000000) {
 			valorAprobado = 50000000;
 		}
 		return valorAprobado;	
+	}
+	
+	public static Response response(String message, String status) {
+		Response res = new Response();
+		if(message != null && status != null) {
+			res.setMessage(message);
+			res.setStatus(status);    
+		}
+		return res;
 	}
 }
