@@ -1,0 +1,20 @@
+:::BASE DE DATOS CREADA EN MYSQL:::
+
+create database clientes;
+use clientes;
+
+create table registro(
+ClienteID int primary key,
+Nombre varchar (50),
+Apellido varchar (50),
+FechaNacimiento varchar(20));
+
+create table prestamo(
+ID int auto_increment primary key,
+NombreEmpresa varchar (50),
+NitEmpresa int,
+SalarioActual double,
+FechaIngreso varchar(20),
+ValorAprobado double,
+ClienteID int,
+foreign key (ClienteID) references registro (ClienteID));
